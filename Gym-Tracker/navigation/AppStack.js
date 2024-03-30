@@ -4,8 +4,8 @@ import { PaperProvider } from "react-native-paper";
 import React from "react";
 import HomeScreen from "../screens/HomeScreen";
 import { useAppContext } from "../data/Context";
-import CustomNavigationBar from "../components/CustomNavigationBar";
 import { View } from "react-native";
+import HomeNavigationBar from "../components/HomeNavigationBar";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,14 +20,17 @@ const AppStack = () => {
 				<NavigationContainer theme={navigationTheme}>
 					<Stack.Navigator
 						initialRouteName="Home"
-						screenOptions={{
-							header: (props) => (
-								<CustomNavigationBar {...props} />
-							),
-						}}
-						mode="modal"
+						screenOptions={{ header: false }}
 					>
-						<Stack.Screen name="Home" component={HomeScreen} />
+						<Stack.Screen
+							name="Home"
+							component={HomeScreen}
+							options={{
+								header: (props) => (
+									<HomeNavigationBar {...props} />
+								),
+							}}
+						/>
 					</Stack.Navigator>
 				</NavigationContainer>
 			</PaperProvider>

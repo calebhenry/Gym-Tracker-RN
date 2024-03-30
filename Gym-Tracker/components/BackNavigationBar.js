@@ -1,12 +1,7 @@
 import { Appbar, useTheme } from "react-native-paper";
 import { getHeaderTitle } from "@react-navigation/elements";
 
-export default function CustomNavigationBar({
-	navigation,
-	route,
-	options,
-	back,
-}) {
+const BackNavigationBar = ({ navigation, route, options, back }) => {
 	const title = getHeaderTitle(options, route.name);
 
 	return (
@@ -15,4 +10,6 @@ export default function CustomNavigationBar({
 			<Appbar.Content title={title} />
 		</Appbar.Header>
 	);
-}
+};
+
+export default BackNavigationBar;
