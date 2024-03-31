@@ -1,3 +1,8 @@
+/**
+ * @Author Caleb Henry
+ * @Brief Basic app bar with back button
+ * @Notes
+ */
 import { Appbar, useTheme } from "react-native-paper";
 import { getHeaderTitle } from "@react-navigation/elements";
 
