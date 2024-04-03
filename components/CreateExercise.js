@@ -21,6 +21,7 @@ const CreateExercise = ({ setExercises, setEditing }) => {
 	const [sets, setSets] = useState([]);
 	const [visible, setVisible] = useState(false);
 	const theme = useTheme();
+	const validInput = sets.length != 0;
 
 	/**
 	 * Toggles if the set modal is visible
@@ -60,35 +61,39 @@ const CreateExercise = ({ setExercises, setEditing }) => {
 						scrollEnabled={false}
 						keyExtractor={(item) => item.id}
 					/>
+				</Card.Content>
+				<Card.Actions>
 					<IconButton
 						icon="plus"
 						size={22}
 						mode="contained"
-						iconColor={theme.colors.onPrimary}
-						containerColor={theme.colors.primary}
-						style={{ alignSelf: "center" }}
 						onPress={showModal}
 					/>
-				</Card.Content>
-				<Card.Actions>
-					<Button
-						onPress={() => {
-							setEditing(false);
-						}}
-					>
-						Cancel
-					</Button>
-					<Button
+					<IconButton
+						icon="check"
+						size={22}
+						mode="contained"
+						disabled={!validInput}
 						onPress={() => {
 							setExercises((exercises) => [
 								...exercises,
-								{ name: name, sets: sets },
+								{
+									id: exercises.length + 1,
+									name: name,
+									sets: sets,
+								},
 							]);
 							setEditing(false);
 						}}
-					>
-						Save
-					</Button>
+					/>
+					<IconButton
+						icon="close"
+						size={22}
+						mode="outlined"
+						onPress={() => {
+							setEditing(false);
+						}}
+					/>
 				</Card.Actions>
 			</Card>
 			<CreateSet

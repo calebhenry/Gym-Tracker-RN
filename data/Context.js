@@ -18,11 +18,13 @@ export const useAppContext = () => {
 
 export const ContextProvider = ({ children }) => {
 	const [currTheme, setCurrTheme] = useState("light");
+	const [currRoutine, setCurrRoutine] = useState();
 	const [dynamicColor, setDynamicColor] = useState(true);
 	const [routines, setRoutines] = useState([
-		{ name: "try me", description: "okay" },
-		{ name: "try me again", description: "fine" },
+		{ id: 1, name: "try me", description: "okay", exercises: [] },
+		{ id: 2, name: "try me again", description: "fine", exercises: [] },
 	]);
+	const routinesLength = routines.length;
 	const { paperTheme, navigationTheme } = Theme({
 		mode: currTheme,
 		dynamic: dynamicColor,
@@ -62,6 +64,9 @@ export const ContextProvider = ({ children }) => {
 				paperTheme,
 				navigationTheme,
 				routines,
+				routinesLength,
+				currRoutine,
+				setCurrRoutine,
 				switchTheme,
 				toggleDynamicColor,
 				addRoutine,

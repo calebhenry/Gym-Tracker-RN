@@ -16,11 +16,9 @@ const Exercise = ({ exercise }) => {
 	 */
 	const renderItem = ({ item }) => {
 		return (
-			<View style={Constants.marginSmall}>
-				<Text variant="titleMedium">
-					Set {item.id}: {item.reps} reps of {item.weight}
-				</Text>
-			</View>
+			<Text variant="titleMedium" style={{ marginBottom: "2%" }}>
+				Set {item.id}: {item.reps} reps of {item.weight}
+			</Text>
 		);
 	};
 

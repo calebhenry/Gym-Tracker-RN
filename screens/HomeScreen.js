@@ -11,7 +11,7 @@ import { useAppContext } from "../data/Context";
 
 const HomeScreen = ({ navigation }) => {
 	const theme = useTheme();
-	const { routines } = useAppContext();
+	const { routines, setCurrRoutine } = useAppContext();
 
 	/**
 	 * Renders each routine as a card
@@ -20,7 +20,13 @@ const HomeScreen = ({ navigation }) => {
 	 */
 	const renderItem = ({ item }) => {
 		return (
-			<Card style={Constants.marginSmall}>
+			<Card
+				style={Constants.marginSmall}
+				onPress={() => {
+					setCurrRoutine(routines[item.id - 1]);
+					navigation.navigate("Routine");
+				}}
+			>
 				<Card.Title title={item.name} titleVariant="titleLarge" />
 				<Card.Content>
 					<Text variant="bodyMedium">{item.description}</Text>

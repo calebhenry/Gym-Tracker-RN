@@ -14,7 +14,8 @@ import HomeNavigationBar from "../components/HomeNavigationBar";
 import BackNavigationBar from "../components/BackNavigationBar";
 import Settings from "../screens/Settings";
 import { StatusBar } from "expo-status-bar";
-import RoutineCreation from "../screens/RoutineCreation";
+import Routine from "../screens/Routine";
+import CreateRoutine from "../screens/CreateRoutine";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,11 +52,13 @@ const AppStack = () => {
 						<Stack.Screen name="Settings" component={Settings} />
 						<Stack.Screen
 							name="Create"
-							component={RoutineCreation}
+							component={CreateRoutine}
 							options={{
+								headerShown: false,
 								animation: "slide_from_bottom",
 							}}
 						/>
+						<Stack.Screen name="Routine" component={Routine} />
 					</Stack.Navigator>
 				</NavigationContainer>
 			</PaperProvider>
