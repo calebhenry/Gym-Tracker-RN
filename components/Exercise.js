@@ -4,7 +4,7 @@
  * @Notes
  */
 import React from "react";
-import { Card, Text } from "react-native-paper";
+import { Card, IconButton, Text } from "react-native-paper";
 import { Constants } from "../styles";
 import { FlatList, View } from "react-native";
 
@@ -24,7 +24,14 @@ const Exercise = ({ exercise }) => {
 
 	return (
 		<Card style={Constants.marginMedium}>
-			<Card.Title title={exercise.name} titleVariant="titleLarge" />
+			<Card.Title
+				title={exercise.name}
+				titleVariant="titleLarge"
+				right={(props) => (
+					<IconButton {...props} icon="pencil" onPress={() => {}} />
+				)}
+			/>
+
 			<Card.Content>
 				<FlatList
 					data={exercise.sets}
